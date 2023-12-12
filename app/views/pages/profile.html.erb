@@ -1,0 +1,30 @@
+<div class="container-white-background">
+      <div class="profile-container">
+
+        <h2 class="home-title">Profile</h2>
+        <div class="profile-image">
+          <%= render "shared/user-profile-image" %>
+          <%= current_user.username %>
+        </div>
+            <h2 class="home-title"> My reports </h2>
+            <div class="main-cards-home-missing">
+              <%= render "pets/cards-pets-reports" %>
+            </div>
+
+            <h2 class="home-title"> Past reports </h2>
+            <div class="main-cards-home-missing">
+              <%= render "pets/cards-past-reports" %>
+            </div>
+
+        <% if user_signed_in? %>
+        <a data-turbo-method="delete" class="" href="/users/sign_out">
+          <div class="btn-sign-out">
+            <%= render "shared/signout-svg" %>
+            <p class="sign-out-p">Sign out</p>
+          </div>
+        </a>
+      <% end %>
+      </div>
+      </div>
+    </div>
+</div>

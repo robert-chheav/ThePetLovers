@@ -1,0 +1,27 @@
+<div class="container-white-background">
+  <div class="home-container">
+
+    <h2 class='home-title'>Most recent missing petzzz</h2>
+      <div class="main-cards-home-missing">
+        <%= render "pets/cards-home-missing" %>
+      </div>
+
+    <h2 class='home-title'>Most recent found pets</h2>
+      <div class="main-cards-home-found">
+        <%= render "pets/cards-home-found" %>
+      </div>
+    </div>
+
+  <h2 class='home-title'>Where are they?</h2>
+  <%= render "shared/map-home-pet" %>
+  <div class="meaning-map">
+    <div class="meaning-pet">
+      <%= render "shared/lost-pet-svg"%>
+      <p>Lost pet</p>
+    </div>
+    <div class="meaning-pet">
+      <%= render "shared/found-pet-svg"%>
+      <p>Found pet</p>
+    </div>
+  </div>
+  </div>

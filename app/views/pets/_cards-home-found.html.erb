@@ -1,0 +1,18 @@
+<% @pets_found.each do |pet| %>
+  <% if pet.missing? === true %>
+
+    <a href="<%= pet_path(pet) %>">
+    <div class="card-container-home" style="background-image: url('<%= cl_image_path pet.photo.key, height: 300, crop: :fill %>')">
+      <div class="card-container-home-overlay">
+        <% if pet.name.present? %>
+          <p><%= pet.name.capitalize %></p>
+        <% else %>
+          <p>Found <%= pet.species.downcase %></p>
+        <% end %>
+
+        <small><span><%= pet.city.capitalize %></span></small>
+      </div>
+    </div>
+    </a>
+  <% end %>
+<% end %>

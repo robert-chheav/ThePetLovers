@@ -1,0 +1,163 @@
+.pet-image {
+  position: relative;
+  width: 100%;
+  height: 200px; /* height of container */
+
+  img {
+    width: 100%;
+    height: 45vh;
+    object-fit: cover;
+  }
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.74) 15%, rgba(0,0,0,0) 100%);
+}
+
+.pet-details {
+  margin: 20px 10px 10px 10px;
+}
+
+.pet-themes {
+  color: $text;
+  font-weight: bold;
+}
+
+.additional-features {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding-bottom: 10px;
+
+  svg:nth-child(n+2) {
+    margin-right: 5px;
+  }
+}
+
+.left-icon {
+  // margin-right: auto;
+  display: flex;
+  gap: 5px;
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  svg {
+    color: $darkgray;
+  }
+}
+
+.right-icon {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 5px;
+
+  .btn {
+    margin: 0px;
+    padding: 0px;
+  }
+
+  .chatroom_name {
+    margin: 0px!important;
+    padding: 0px;
+  }
+
+  .chatroom_pet_id {
+    margin: 0!important;
+    padding: 0;
+  }
+
+}
+
+.change-state{
+  margin-bottom: 23px;
+}
+
+#success-message {
+  color: rgb(86, 166, 86);
+  text-align: center;
+}
+
+.about-pet {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 23px;
+}
+
+.color-breed-pet {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  background-color: $lightgray;
+  border-radius: 10px;
+  padding: 11px 14px;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  h3 {
+    margin: 0;
+    padding: 0;
+    color: $text;
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+.activity {
+  background-color: $lightgray;
+  border-radius: 10px;
+  color: $darkgray;
+  padding-top: 4px;
+  padding-left: 10px;
+  padding-right: 2px;
+  padding-bottom: 3px;
+}
+
+#theme-activity {
+  display: flex;
+  align-items: center;
+  svg {
+    margin-right: 6px;
+  }
+}
+
+
+.share-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0;
+  margin-bottom: 10px;
+
+  button {
+    border: none;
+    padding: 5px 10px;
+    border-radius: 0px 10px 10px 0px;
+    border: solid 1px $blue;
+    background: $blue;
+    transition: background 0.3s;
+
+
+    &:active {
+      background: $lightblue;
+    }
+
+  }
+
+  .share-content {
+    border: solid 1px $blue;
+    padding: 5px 10px;
+    border-radius: 10px 0 0 10px;
+  }
+}

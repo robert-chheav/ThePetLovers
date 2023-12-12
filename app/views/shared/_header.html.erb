@@ -1,0 +1,16 @@
+<div class="header-container">
+    <%# The link_to is going to be dinamic? Depending on where the person is? %>
+  <div class="navigation-header">
+    <% unless current_page?(root_path) %>
+      <%= link_to(render("shared/arrow-back-svg"), 'javascript:history.back()') %>
+    <% else %>
+      <%= render "shared/logo" %>
+    <% end %>
+  </div>
+  <div class='header'>
+    <% if user_signed_in? %>
+      <%= render "shared/bell" %>
+      <%= link_to render("shared/message-bubble"), chatrooms_path %>
+    <% end %>
+  </div>
+</div>

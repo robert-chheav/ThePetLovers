@@ -1,0 +1,121 @@
+<div class="pet-image">
+  <div class="gradient-overlay"></div>
+  <%= cl_image_tag @pet.photo.key %>
+</div>
+<div class = "container-white-background" data-controller="share" data-share-url-value="<%= pet_url(@pet) %>">
+  <div class="pet-details">
+    <% if @pet.name.present?%>
+      <%= "Reporter:" %> <%= @pet.user.username %>
+      <h2 class="pet-themes"><%= @pet.name.capitalize %></h2>
+    <% else %>
+      <h2 class="pet-themes"><%= "Found by:" %> <%= @pet.user.username %></h2>
+    <% end %>
+
+    <div class="additional-features">
+      <div class="left-icon">
+        <%= render "shared/location-svg" %>
+        <p><%= @pet.street.capitalize %> | <%= @pet.city.capitalize %></p>
+      </div>
+      <div class="right-icon">
+        <div>
+          <input type="checkbox" name="share" id="share" class="input-index" data-share-target="checkbox" data-action="click->share#share">
+          <label for="share"><%= render "shared/share-svg" %></label>
+        </div>
+
+        <% unless @pet.user == current_user %>
+        <div>
+
+          <%# Chat Icon and Logic %>
+          <%# IF USER not Log-in %>
+          <% if current_user.nil? %>
+            <%# Go to Log-in page %>
+            <%= link_to new_user_session_path do %>
+              <%= render "shared/message-svg" %>
+            <% end %>
+          <%# ELSE %>
+          <% else %>
+            <% if current_user.has_chat_with?(@pet) %>
+              <%= link_to chatroom_path(@existing_chat) do %>
+                  <%= render "shared/message-svg" %>
+              <% end %>
+
+            <% else %>
+              <%= simple_form_for @chatroom do |f| %>
+                <%= f.input :name, as: :hidden, input_html: { value: @pet.user.username } %>
+                <%= f.input :pet_id, as: :hidden, input_html: { value: @pet.id } %>
+                <%= f.button :button, class: "ms-icon" do %>
+                <%= render "shared/message-svg" %>
+                <% end %>
+              <% end %>
+
+            <% end %>
+          <%# END %>
+          <% end %>
+
+        </div>
+        <% end %>
+
+        <div>
+          <% if @pet.species == "cat" %>
+            <%= render "shared/cat-svg" %>
+          <% else %>
+            <%= render "shared/dog-svg" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="share-input">
+      <div class="share-content" data-share-target="clipboard"></div>
+      <button data-action="click->share#copyClip" data-share-target="button">Copy</button>
+    </div>
+
+
+    <div class="change-state">
+    <%# current id e missing %>
+      <% if @pet.user == current_user && @pet.missing == true %>
+      <div class="button-pink" >
+        <%= link_to "Mark as found", mark_path(@pet), data: {controller:"confetti", action:"click->confetti#spray", animation_value:"basic"}, class: "button-pink" %>
+      </div>
+      <% elsif @pet.missing == true && @pet.category = "I lost" %>
+        <p class="button-black d-none">I found this pet!</p>
+      <% else %>
+        <p id="success-message">🎉 Yeaaah this pet is reunited! 🎉</p>
+      <% end %>
+    </div>
+
+    <% if @pet.name.present? %>
+      <h2 class="pet-themes">About <%= @pet.name.capitalize %></h2>
+    <% else %>
+      <h2 class="pet-themes"> About the pet</h2>
+    <% end %>
+
+      <div class="about-pet">
+        <div class="color-breed-pet">
+          <h3>Color</h3>
+          <p><%= @pet.colors.capitalize %></p>
+        </div>
+        <div class="color-breed-pet">
+          <h3>Breed</h3>
+          <% if @pet.breed.present?%>
+            <p><%= @pet.breed.capitalize%></p>
+          <% else %>
+            <p>"Not informed"</p>
+          <% end %>
+        </div>
+      </div>
+
+
+    <h2 class="pet-themes pt-1">More details</h2>
+    <p><%= @pet.details.capitalize %></p>
+    <div class="activity my-2">
+      <div id="theme-activity">
+        <h2 class="pet-themes pt-1">Recent Activity</h2>
+      </div>
+      <p>📍 Last seen: <%= @pet.street.capitalize %>, <%= @pet.zip_code.upcase %> - <%= @pet.city.capitalize %></p>
+    </div>
+    <h2 class="pet-themes pt-1">Last location of this pet 📍</h2>
+    <%= render 'shared/map-show'%>
+  </div>
+</div>

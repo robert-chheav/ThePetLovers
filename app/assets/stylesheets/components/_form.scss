@@ -1,0 +1,95 @@
+.photo {
+  text-align: center;
+  margin-bottom: 20px 0px 20px;
+  padding-bottom: 10px;
+  h2 {
+    color:$text;
+  }
+}
+.upload-photo-btn {
+  padding-top: 6px;
+}
+.form-group {
+    display: flex;
+    justify-content: space-between;
+  label {
+    color:$text;
+  }
+}
+.material-symbols-outlined p {
+    height:20px;
+}
+.form-submit {
+  margin-top: 40px;
+}
+abbr {
+  display: none;
+}
+
+.pet_species {
+  margin-right: 4px;
+}
+
+.devise-input {
+  color: $text;
+
+  .form-control {
+    height: 50px;
+    border-radius: 10px;
+    border-color: $lightgray;
+    font-size: 14px;
+    color: $text;
+
+  }
+  .remember-forgot{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+  }
+}
+
+.devise-sign-up {
+  color: $text;
+  font-size: 12px;
+
+  a {
+    color: $text;
+  }
+}
+
+.devise-action {
+  display: flex;
+  justify-content: center;
+  height: 54px;
+  align-items: center;
+  background-color: $pink;
+  border-radius: 11px;
+  color: white;
+
+  input {
+    color: white;
+    font-size: 16px;
+  }
+
+  .btn {
+    margin: 0;
+  }
+}
+
+.form-bottom {
+  display: flex;
+  position: relative;
+  bottom: -200px;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-bottom-sign-up {
+  display: flex;
+  position: absolute;
+  bottom: 30px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
